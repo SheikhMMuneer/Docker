@@ -1,0 +1,59 @@
+--- Installation of Docker
+hetzner cloud
+make server and ssh key would be there
+copy ip address of server and ssh should be enable for remote using by ssh.
+open console and ssh root@ipofserver
+sudo apt get-update
+-- From docker website command is given for every OS.
+on google type docker install rancher
+-- from rancher.com install docker command is given below for any Linux OS version except windows this command can be used.
+curl https://releases.rancher.com/install-docker/20.10.sh | sh
+it will self install docker now run
+docker version
+wget https://releases.rancher.com/install-docker/20.10.sh | sh
+ls
+vim 20.10.sh
+change version in file and !q for save
+
+--- Commands for Docker
+docker image: is a file used to execute code in a Docker container.image act as set of instruction to build a docker container 
+like a template
+Container:    is a runable instance of an image.
+
+First pull an image and run container from that image.
+docker pull ngix -- to pull an image
+docker image ls
+Now run container from that image
+docker run -itd --name anycontainername nginx    -- run container in background (it meas run from console)
+docker container ls                              -- to see running container 
+docker rm containername                          -- to remove container
+we cannot remove running container first stop container and en remove container
+docker stop containername
+docker rm -f containername                       -- forcefully remove container
+docker container ls  
+docker image ls 
+docker rmi    nameofimage                           -- to remove image
+docker rmi -f nameofimage                           -- to forcefully remove image
+docker image ls 
+
+-- directly run container without pulling
+docker run -itd --name anycontainername nginx    -- it will first pull image and then run container
+docker container ls  
+docker image ls
+
+
+-- Inspect logs
+I can access container from browser with IP and port number
+docker run -itd --name anycontainername -p 8081:80 nameofimage
+docker logs    containerid / containername
+docker inspect containerid / containername    -- it provides every detail of container
+netstat -tulnps                               -- port 8081 is being used by local system.see which port is running
+ip -a                                         -- this will get public ip address of system 65.21.244.121
+now go to browser and type 65.21.244.121.8081 --  by this we can access our container from browser.
+
+
+
+
+
+
+
